@@ -3,12 +3,14 @@ package Test_Pages;
 import org.testng.asserts.SoftAssert;
 
 import Base.BaseClass;
+import Base.PropertyDataReader;
 import Base.SeleniumUtils;
 import ObjectRepo.HomeElements;
 
 public class HomePage extends BaseClass {
 	
 	SeleniumUtils selutil=new SeleniumUtils();
+	PropertyDataReader pdata=new PropertyDataReader();
 	//HomeElements hElements;
 	HomeElements hElements;
 	public void verifyElectronicsBtn(String lang)
@@ -25,7 +27,8 @@ public class HomePage extends BaseClass {
 		System.out.println(actbtn);			
 		hElements.ClickElectronicsBtn();
 		hElements.getElectronicsBtn().click();
-		String Expctbtn="Electronics";
+		String Expctbtn=pdata.getpropertyData("Electronics", lang);
+		//String Expctbtn="Electronicss";
 		SoftAssert sassert=new SoftAssert();
 		sassert.assertEquals(actbtn, Expctbtn,"Actual and expected not Matching");
 		sassert.assertEquals(actbtn, Expctbtn);

@@ -29,12 +29,34 @@ public class PropertyDataReader {
 		
 		if(value == null)
 		{
-			throw new RuntimeException("Missing text for key: " + key + " in language: " + currentLang);
+			throw new RuntimeException("Missing text for key: " + key + " in language: " + language);
 		}
 		return value;
 		
 		
 	}
 	
+	public String getpropertyDataPath(String key)
+	{
+		
+		try(FileInputStream fis=new FileInputStream("./src/test/resources/Data/commondata.properties"))
+		{
+			p.load(fis);
+			//currentLang=language;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		String value=p.getProperty(key);  
+		
+		if(value == null)
+		{
+			throw new RuntimeException("Missing text for key: " + key + " in language: " + currentLang);
+		}
+		return value;
+		
+		
+	}
 	
 }
